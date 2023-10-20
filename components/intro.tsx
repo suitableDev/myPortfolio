@@ -20,6 +20,14 @@ export default function Intro() {
                     duration: 0.2,
                 }}
                 >
+                  <svg className="h-0 w-0">
+                    <clipPath id="inline-blob" clipPathUnits="objectBoundingBox" transform="scale(0.0023, 0.0021)">
+                      <path d="M332.3,48.8c32.6,18.1,58.5,49.4,64.7,83.7c6.3,34.3-7.1,71.5-15.8,107.1c-8.6,35.7-12.6,69.7-26,108.4
+                        c-13.5,38.6-36.5,81.9-68,86.9c-31.4,5-71.5-28.3-117.1-41.8c-45.7-13.6-97.1-7.5-123.9-28.3c-26.7-20.8-28.9-68.5-35-115.4
+                        c-6.2-46.8-16.4-92.6-8-138c8.3-45.3,35.3-90,74.7-105s91.3-0.3,136.9,9.6C260.4,25.8,299.7,30.6,332.3,48.8z"/>
+                    </clipPath>
+                  </svg>
+
                 <Image 
                 src="/me.jpg" 
                 alt="Scott James front end developer"

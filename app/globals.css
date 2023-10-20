@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .blob {
+        clip-path: url(#inline-blob);
+      }
+      
+      @keyframes rot_kf {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+      }
+      .rot { animation: rot_kf 4s linear infinite; }
+}
