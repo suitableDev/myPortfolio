@@ -1,10 +1,10 @@
-import React from "react";
-import { CgWorkAlt } from "react-icons/cg";
-import { FaReact } from "react-icons/fa";
-import { LuGraduationCap } from "react-icons/lu";
-import corpcommentImg from "@/public/corpcomment.png";
-import rmtdevImg from "@/public/rmtdev.png";
-import wordanalyticsImg from "@/public/wordanalytics.png";
+import React from "react"
+import { CgWorkAlt } from "react-icons/cg"
+import { FaReact } from "react-icons/fa"
+import { LuGraduationCap } from "react-icons/lu"
+import project1 from "@/public/project1.png"
+import project2 from "@/public/project2.png"
+import project3 from "@/public/project3.png"
 
 export const links = [
   {
@@ -31,7 +31,7 @@ export const links = [
     name: "Contact",
     hash: "#contact",
   },
-] as const;
+] as const
 
 export const experiencesData = [
   {
@@ -58,31 +58,31 @@ export const experiencesData = [
     icon: React.createElement(FaReact),
     date: "2021 - present",
   },
-] as const;
+] as const
 
 export const projectsData = [
   {
-    title: "CorpComment",
+    title: "Project1",
     description:
-      "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
+      "This is just some holding text about this project. I've also including some random holding tags below. blah blah blah",
     tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
-    imageUrl: corpcommentImg,
+    imageUrl: project1,
   },
   {
-    title: "rmtDev",
+    title: "Project2",
     description:
-      "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
+    "This is just some holding text about this project. I've also including some random holding tags below. blah blah blah",
     tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
-    imageUrl: rmtdevImg,
+    imageUrl: project2,
   },
   {
-    title: "Word Analytics",
+    title: "Project3",
     description:
-      "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
+    "This is just some holding text about this project. I've also including some random holding tags below. blah blah blah",
     tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
-    imageUrl: wordanalyticsImg,
+    imageUrl: project3,
   },
-] as const;
+] as const
 
 export const skillsData = [
   "HTML",
@@ -104,4 +104,4 @@ export const skillsData = [
   "Python",
   "Django",
   "Framer Motion",
-] as const;
+] as const

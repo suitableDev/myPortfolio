@@ -3,23 +3,31 @@ import Image from "next/image"
 import React from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
-import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
+import { BsArrowRight, BsLinkedin } from "react-icons/bs"
+import { HiDownload } from "react-icons/hi"
+import { FaGithubSquare } from "react-icons/fa"
+import { useSectionInView } from "@/lib/hooks"
 
 export default function Intro() {
+  const { ref } = useSectionInView("Home", 0.5)
+
   return (
-    <section className="mb-28 max-w-[50rem] text-center sm:mb-0">
+    <section 
+      ref={ref}
+      id="home"
+      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      >
         <div className="flex items-center justify-center">
             <div className="relative">
-                <motion.div
-                initial={{ opacity: 0, scale: 0}}
-                animate={{ opacity: 1, scale: 1}}
-                transition={{
-                    type: "tween",
-                    duration: 0.2,
-                }}
-                >
+            <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              type: "tween",
+              duration: 0.2,
+            }}
+          >
+
                   <svg className="h-0 w-0">
                     <clipPath id="inline-blob" clipPathUnits="objectBoundingBox" transform="scale(0.0023, 0.0021)">
                       <path d="M332.3,48.8c32.6,18.1,58.5,49.4,64.7,83.7c6.3,34.3-7.1,71.5-15.8,107.1c-8.6,35.7-12.6,69.7-26,108.4
