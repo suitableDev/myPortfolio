@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer utilities {
+/* 
+For clip-path and rotation on Intro Image:
+className="blob rot" 
+*/
+
     .blob {
         clip-path: url(#inline-blob);
       }
@@ -11,5 +16,9 @@
         from { transform: rotate(0deg); }
         to   { transform: rotate(360deg); }
       }
-      .rot { animation: rot_kf 4s linear infinite; }
+      .rot { animation: rot_kf 4s linear infinite; } 
+}
+
+html {
+  --line-color: #e5e7eb;
 }
