@@ -35,26 +35,26 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Graduated bootcamp",
-    location: "Miami, FL",
+    title: "Education",
+    location: "Location",
     description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
+      "whoever Epona Link Tingle Deku whenever Epona precisely simply totally highly wherever very amazing possibly surely Hyrule Princess Ruto virtually especially real usually mostly so seriously actually Goron seriously generally surely frankly Darunia Sheik start truly start Hyrule widely badly hopefully actual hopefully very largely significantly primarily Princess Ruto might largely",
     icon: React.createElement(LuGraduationCap),
     date: "2019",
   },
   {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
+    title: "Work",
+    location: "Location",
     description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
+      "Nayru frankly ultimately Triforce Impa mostly wherever Din amazing Sheik possibly completely particularly widely probably extremely start frequently actual seriously Hyrule might begin totally stuff begin extremely significantly perhaps Boomerang Rauru amazing Great Fairy extremely Link just Epona might highly primarily so like approximately begin clearly heavily amazing widely Zelda certainly",
     icon: React.createElement(CgWorkAlt),
     date: "2019 - 2021",
   },
   {
-    title: "Full-Stack Developer",
-    location: "Houston, TX",
+    title: "Dev Experience",
+    location: "Location",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+      "Din try really Malon entirely try Zora clearly surely hopefully things widely things just extremely most probably Bombchu Triforce mostly literally Zelda fairly possibly Master Sword totally things Dampé hardly widely Tingle Nayru entirely real Bombchu Bongo Bongo actually very Deku precisely seriously so particularly maybe primarily obviously mostly anyway easily hardly",
     icon: React.createElement(FaReact),
     date: "2021 - present",
   },
@@ -94,14 +94,7 @@ export const skillsData = [
   "Node.js",
   "Git",
   "Tailwind",
-  "Prisma",
-  "MongoDB",
-  "Redux",
-  "GraphQL",
-  "Apollo",
-  "Express",
-  "PostgreSQL",
-  "Python",
-  "Django",
   "Framer Motion",
+  "MongoDB",
+  "Express",
 ] as const

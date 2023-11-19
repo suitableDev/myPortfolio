@@ -7,12 +7,12 @@ import { experiencesData } from "@/lib/data"
 import { useSectionInView } from "@/lib/hooks"
 
 export default function Experience() {
-  const { ref } = useSectionInView("Experience")
+  const { ref } = useSectionInView("Experience", 0.3)
   return (
     <section
     ref={ref} 
     id="experience"
-    className="scroll-mt-28 mb-28 sm:mb-40"
+    className="scroll-mt-28 mb-28 sm:mb-35"
     >
         <SectionHeading>My Experience</SectionHeading>
         <VerticalTimeline lineColor="">
