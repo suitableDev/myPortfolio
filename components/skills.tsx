@@ -1,5 +1,5 @@
 "use client"
-import SectionHeading from "./sectionHeading"
+import SectionHeading from "./section-heading"
 import { useSectionInView } from "@/lib/hooks"
 import { skillsData } from "@/lib/data"
 import { motion } from "framer-motion" 
