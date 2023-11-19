@@ -96,14 +96,14 @@ export default function Intro() {
           Download CV{" "}
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
         </a>
-
+{/* 
         <a
           className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack"
           href="https://images.squarespace-cdn.com/content/v1/62a793833847c539b0967c69/1657795316505-ZUWEOL5OIC4TU6QZSGIZ/image-asset.jpeg?format=1000w"
           target="_blank"
         >
           <BsLinkedin />
-        </a>
+        </a> */}
 
         <a
           className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack"
