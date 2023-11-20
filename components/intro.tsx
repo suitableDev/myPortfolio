@@ -66,11 +66,11 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, NITETRAX.</span> I do hope you're having a{" "}
-        <span className="font-bold">LOVELY day</span> and are wrapped up{" "}nice and warm. fancy a trip to the pub{" "} 
-        <span className="italic">at the end of the week?</span> 
-        <p>I reckon that'd be{" "}
-        <span className="underline">MEGA!</span>.</p>
+        <span className="font-bold">Hello, I'm Scott.</span> I'm a{" "}
+        <span className="font-bold">front-end developer</span> with a{" "}
+        <span className="font-bold">zesty</span> lust for life. I bloody love
+        building <span className="italic">sites & apps</span>. My focus is{" "}
+        <span className="underline">React (Next.js)</span>.
       </motion.h1>
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
