@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react"
 import { getExperienceData } from "@/sanity/lib/client"
 import { PortableText } from "@portabletext/react"
-import Image from "next/image"
 import { useSectionInView } from "@/lib/hooks"
 import SectionHeading from "./section-heading"
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
+import SVG from 'react-inlinesvg'
 
 export default function Experience() {
   const { ref } = useSectionInView("Experience", 0.3)
@@ -25,8 +25,9 @@ export default function Experience() {
 fetchData();
 }, []); 
 if (!experience) {
-return
+return null
 }
+
   return (
     <section
     ref={ref} 
@@ -50,25 +51,15 @@ return
                  borderRight:"0.4rem solid #9ca3af",
                }}
                 date={item.date}
-                icon= {
-                  <Image 
-                  src={item.icon? item.icon:"/me.jpg"}
-                  alt='test'
-                  width="100"
-                  height="100"
-                  quality="95"
-                  priority={true}
-                  />
-                }
+                icon={< SVG src={item.icon.svg} style={{ marginLeft: '-12px' }}/>}
                iconStyle={{
                  background: "white" ,
-                 fontSize: "1.5rem",
+                 fontSize: "1rem",
                }}
              >
                 <h3>{item.title}</h3>
                 <p>{item.location}</p>
-                <PortableText value={item.description} />
-                
+                <PortableText value={item.description} />  
               </VerticalTimelineElement>
               </React.Fragment>
             ))}

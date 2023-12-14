@@ -24,7 +24,10 @@ export default defineType({
     {
       name: 'icon',
       title: 'Icon',
-      type: 'image',
+      type: 'iconPicker',
+      options: {
+        storeSvg: true
+      }
     },
     {
         name: 'date',
