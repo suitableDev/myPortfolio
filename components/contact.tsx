@@ -1,14 +1,32 @@
 "use client"
-
+import React, { useEffect, useState } from "react"
 import SectionHeading from "./section-heading"
 import { motion } from "framer-motion"
 import { useSectionInView } from "@/lib/hooks"
 import { sendEmail } from "@/actions/sendEmail"
 import SubmitBtn from "./submit-btn"
 import toast from "react-hot-toast"
+import { getContactData } from "@/sanity/lib/client"
 
 export default function Contact() {
     const { ref } = useSectionInView("Contact")
+    const [contactData, setContactData] = useState([])
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const data = await getContactData()
+          setContactData(data)
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+      fetchData();
+    }, []); 
+  //prevent error on no data being present
+    if (!contactData) {
+      return
+    }
 
   return (
     <motion.section
@@ -33,7 +51,7 @@ export default function Contact() {
     <p className="text-gray-700 -mt-6">
       Please contact me directly at{" "}
       <a className="underline" href="mailto:example@gmail.com">
-        example@gmail.com
+        {contactData.email}
       </a>{" "}
       or through this form.
     </p>

@@ -10,13 +10,13 @@ import { PortableText } from "@portabletext/react"
 
 export default function Test() {
   const { ref } = useSectionInView("About", 0.6)
-  const [ about, setAbout ] = useState(null)
+  const [ testData, setTestData ] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
     try{
         const data = await getAboutMeData()
-        setAbout(data)
+        setTestData(data)
     } catch(error){
         console.error('Error fetching data:', error)
     }
@@ -24,7 +24,7 @@ export default function Test() {
 
 fetchData();
 }, []); 
-if (!about) {
+if (!testData) {
 return
 }
 
@@ -38,11 +38,9 @@ return
     id="about"
     >
         <SectionHeading>
-        {about.title}
+        {testData.title}
         </SectionHeading>
-
-        <PortableText value={about.text} />
-        
+        <PortableText value={testData.text} />
     </motion.section>
   )
 }

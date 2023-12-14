@@ -22,6 +22,11 @@ export default defineType({
       of: [{ type: 'block' }],
     },
     {
+      name: 'icon',
+      title: 'Icon',
+      type: 'image',
+    },
+    {
         name: 'date',
         title: 'date',
         type: 'string',

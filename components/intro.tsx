@@ -1,16 +1,36 @@
 "use client"
 import Image from "next/image"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { BsArrowRight } from "react-icons/bs"
 import { HiDownload } from "react-icons/hi"
 import { FaGithubSquare } from "react-icons/fa"
 import { useSectionInView } from "@/lib/hooks"
+import { getIntroData } from "@/sanity/lib/client"
+import { PortableText } from "@portabletext/react"
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5)
+  const [intro, setIntro] = useState(null)
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getIntroData()
+        setIntro(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []); 
+//prevent error on no data being present
+  if (!intro) {
+    return 
+  }
+
+  
   return (
     <section 
       ref={ref}
@@ -30,8 +50,8 @@ export default function Intro() {
 
 
                 <Image 
-                src="/me.jpg" 
-                alt="Scott James front end developer"
+                src={intro.image}
+                alt={intro.alt}
                 width="192"
                 height="192"
                 quality="95"
@@ -59,11 +79,7 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, I'm Scott.</span> I'm a{" "}
-        <span className="font-bold">front-end developer</span> with a{" "}
-        <span className="font-bold">zesty</span> lust for life. I bloody love
-        building <span className="italic">sites & apps</span>. My focus is{" "}
-        <span className="underline">React (Next.js)</span>.
+        <PortableText value={intro.text}/>
       </motion.h1>
       
       <motion.div

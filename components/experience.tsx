@@ -1,13 +1,32 @@
 "use client"
-import React from "react"
+import React, { useEffect, useState } from "react"
+import { getExperienceData } from "@/sanity/lib/client"
+import { PortableText } from "@portabletext/react"
+import Image from "next/image"
+import { useSectionInView } from "@/lib/hooks"
 import SectionHeading from "./section-heading"
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
-import { experiencesData } from "@/lib/data"
-import { useSectionInView } from "@/lib/hooks"
 
 export default function Experience() {
   const { ref } = useSectionInView("Experience", 0.3)
+  const [ experience, setExperience ] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+    try{
+        const data = await getExperienceData()
+        console.log(data)
+        setExperience(data)
+    } catch(error){
+        console.error('Error fetching data:', error)
+    }
+};
+fetchData();
+}, []); 
+if (!experience) {
+return
+}
   return (
     <section
     ref={ref} 
@@ -17,7 +36,7 @@ export default function Experience() {
         <SectionHeading>My Experience</SectionHeading>
         <VerticalTimeline lineColor="">
             {
-            experiencesData.map((item, index) => (
+            experience.map((item, index) => (
               <React.Fragment key={index}>
                <VerticalTimelineElement
                contentStyle={{
@@ -30,8 +49,17 @@ export default function Experience() {
                contentArrowStyle={{
                  borderRight:"0.4rem solid #9ca3af",
                }}
-              //  date={item.date}
-               icon={item.icon}
+                date={item.date}
+                icon= {
+                  <Image 
+                  src={item.icon? item.icon:"/me.jpg"}
+                  alt='test'
+                  width="100"
+                  height="100"
+                  quality="95"
+                  priority={true}
+                  />
+                }
                iconStyle={{
                  background: "white" ,
                  fontSize: "1.5rem",
@@ -39,7 +67,8 @@ export default function Experience() {
              >
                 <h3>{item.title}</h3>
                 <p>{item.location}</p>
-                <p>{item.description}</p>
+                <PortableText value={item.description} />
+                
               </VerticalTimelineElement>
               </React.Fragment>
             ))}
