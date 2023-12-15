@@ -9,27 +9,6 @@ export const client = createClient({
   useCdn,
 })
 
-export async function getIntroData() {
-  return client.fetch(
-    `*[_type == "intro"][0]
-    {
-        "image": image.asset -> url,
-        "alt": image.alt,
-        text
-        }`
-  )
-}
-
-export async function getAboutMeData() {
-  const data = await client.fetch(
-    `*[_type == "about"][0] {
-      title,
-      text
-    }`
-  );
-
-  return data;
-}
 
 export async function getProjectsData() {
   const data = await client.fetch(
@@ -73,12 +52,20 @@ export async function getContactData() {
 export async function getProfileData() {
   const data = await client.fetch(
     `*[_type == 'profile'][0] {
+
       intro     {
         "image": image.asset -> url,
         "alt": image.alt,
         text
         },
+
       about,
+
+      skills {
+        title,
+        "tags": tags[],
+      },
+
       experience,
     }
     `
