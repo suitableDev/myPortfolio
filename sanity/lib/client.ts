@@ -73,7 +73,11 @@ export async function getContactData() {
 export async function getProfileData() {
   const data = await client.fetch(
     `*[_type == 'profile'][0] {
-      intro,
+      intro     {
+        "image": image.asset -> url,
+        "alt": image.alt,
+        text
+        },
       about,
       experience,
     }
@@ -82,16 +86,3 @@ export async function getProfileData() {
 
   return data;
 }
-
-export async function  getExperienceData() {
-  const data = await client.fetch(
-    `*[_type == 'profile'][0] {
-      experience,
-    }
-    `
-  )
-
-  return data;
-}
-
-

@@ -10,12 +10,12 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center px-4">
       <Intro />
-      <SectionDivder />
+      {/* <SectionDivder />
       <About />
-      {/* <Projects />
-      <Skills /> */}
+      <Projects />
+      <Skills />
       <Experience />
-      <Contact />
+      <Contact /> */}
     </main>
   )
 }

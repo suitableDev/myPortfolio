@@ -7,7 +7,7 @@ import { BsArrowRight } from "react-icons/bs"
 import { HiDownload } from "react-icons/hi"
 import { FaGithubSquare } from "react-icons/fa"
 import { useSectionInView } from "@/lib/hooks"
-import { getIntroData } from "@/sanity/lib/client"
+import { getProfileData } from "@/sanity/lib/client"
 import { PortableText } from "@portabletext/react"
 
 export default function Intro() {
@@ -17,8 +17,8 @@ export default function Intro() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getIntroData()
-        setIntro(data);
+        const data = await getProfileData()
+        setIntro(data.intro);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
