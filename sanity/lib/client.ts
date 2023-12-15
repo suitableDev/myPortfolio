@@ -26,18 +26,6 @@ export async function getProjectsData() {
   return data;
 }
 
-export async function getSkillsData() {
-  const data = await client.fetch(
-    `*[_type == "skills"][0] {
-      title,
-      "tags": tags[],
-    }
-    `
-  )
-
-  return data;
-}
-
 export async function getContactData() {
   const data = await client.fetch(
     `*[_type == "contact"][0] {
@@ -67,6 +55,7 @@ export async function getProfileData() {
       },
 
       experience,
+      contact,
     }
     `
   )

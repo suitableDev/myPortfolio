@@ -6,17 +6,17 @@ import { useSectionInView } from "@/lib/hooks"
 import { sendEmail } from "@/actions/sendEmail"
 import SubmitBtn from "./submit-btn"
 import toast from "react-hot-toast"
-import { getContactData } from "@/sanity/lib/client"
+import { getProfileData } from "@/sanity/lib/client"
 
 export default function Contact() {
     const { ref } = useSectionInView("Contact")
-    const [contactData, setContactData] = useState([])
+    const [contact, setContact] = useState([])
 
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const data = await getContactData()
-          setContactData(data)
+          const data = await getProfileData()
+          setContact(data.contact)
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -24,7 +24,7 @@ export default function Contact() {
       fetchData();
     }, []); 
   //prevent error on no data being present
-    if (!contactData) {
+    if (!contact) {
       return
     }
 
@@ -46,12 +46,12 @@ export default function Contact() {
       once: true,
     }}
   >
-    <SectionHeading>Contact me</SectionHeading>
+    <SectionHeading>{contact.title}</SectionHeading>
 
     <p className="text-gray-700 -mt-6">
       Please contact me directly at{" "}
       <a className="underline" href="mailto:example@gmail.com">
-        {contactData.email}
+        {contact.email}
       </a>{" "}
       or through this form.
     </p>
