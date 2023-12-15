@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 import SectionHeading from "./section-heading"
 import { motion } from "framer-motion"
 import { useSectionInView } from "@/lib/hooks"
-import { getAboutMeData } from "@/sanity/lib/client"
+import { getProfileData } from "@/sanity/lib/client"
 import { PortableText } from "@portabletext/react"
 
 
@@ -15,8 +15,8 @@ export default function Test() {
   useEffect(() => {
     const fetchData = async () => {
     try{
-        const data = await getAboutMeData()
-        setAbout(data)
+        const data = await getProfileData()
+        setAbout(data.about)
     } catch(error){
         console.error('Error fetching data:', error)
     }

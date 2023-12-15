@@ -1,5 +1,5 @@
 import { type SchemaTypeDefinition } from 'sanity'
-import imageTEST from './schemas/imageTEST'
+import profile from './schemas/profile'
 import links from './schemas/links'
 import intro from './schemas/intro'
 import about from './schemas/about'
@@ -10,7 +10,7 @@ import contact from './schemas/contact'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
-    imageTEST,
+    profile,
     links,
     intro, 
     about, 

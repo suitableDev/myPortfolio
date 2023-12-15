@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import { getExperienceData } from "@/sanity/lib/client"
+import { getProfileData } from "@/sanity/lib/client"
 import { PortableText } from "@portabletext/react"
 import { useSectionInView } from "@/lib/hooks"
 import SectionHeading from "./section-heading"
@@ -15,9 +15,8 @@ export default function Experience() {
   useEffect(() => {
     const fetchData = async () => {
     try{
-        const data = await getExperienceData()
-        console.log(data)
-        setExperience(data)
+        const data = await getProfileData()
+        setExperience(data.experience)
     } catch(error){
         console.error('Error fetching data:', error)
     }
@@ -25,7 +24,7 @@ export default function Experience() {
 fetchData();
 }, []); 
 if (!experience) {
-return null
+return 
 }
 
   return (
@@ -34,10 +33,10 @@ return null
     id="experience"
     className="scroll-mt-28 mb-28 sm:mb-35"
     >
-        <SectionHeading>My Experience</SectionHeading>
-        <VerticalTimeline lineColor="">
+     {experience && <SectionHeading>{experience.title}</SectionHeading>}
+          {experience.items && <VerticalTimeline lineColor="">
             {
-            experience.map((item, index) => (
+            experience.items.map((item, index) => (
               <React.Fragment key={index}>
                <VerticalTimelineElement
                contentStyle={{
@@ -64,7 +63,7 @@ return null
               </React.Fragment>
             ))}
         </VerticalTimeline>
-
+}
     </section>
   )
 }

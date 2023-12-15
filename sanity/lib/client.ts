@@ -59,21 +59,6 @@ export async function getSkillsData() {
   return data;
 }
 
-export async function getExperienceData() {
-  const data = await client.fetch(
-    `*[_type == "experience"] {
-      title,
-        location,
-        description,
-        icon,
-        date,
-    }
-    `
-  )
-
-  return data
-}
-
 export async function getContactData() {
   const data = await client.fetch(
     `*[_type == "contact"][0] {
@@ -84,3 +69,29 @@ export async function getContactData() {
 
   return data;
 }
+
+export async function getProfileData() {
+  const data = await client.fetch(
+    `*[_type == 'profile'][0] {
+      intro,
+      about,
+      experience,
+    }
+    `
+  )
+
+  return data;
+}
+
+export async function  getExperienceData() {
+  const data = await client.fetch(
+    `*[_type == 'profile'][0] {
+      experience,
+    }
+    `
+  )
+
+  return data;
+}
+
+
