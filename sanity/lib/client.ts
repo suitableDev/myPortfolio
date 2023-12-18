@@ -12,25 +12,18 @@ export const client = createClient({
 
 export async function getProjectsData() {
   const data = await client.fetch(
-    `*[_type == "projects"] {
-      title,
-      description,
-      "tags": tags[],
-      "image": image.asset -> url,
-      "alt": image.alt,
-      text
-    }
-    `
-  )
-
-  return data;
+    `*[_type == 'profile'][0] {
+      projects {
+    title,
+    items[] {
+    name,
+    description,
+    "tags": tags[],
+    "image": image.asset -> url,
+    "alt": image.alt,
+    text}
+  }
 }
-
-export async function getContactData() {
-  const data = await client.fetch(
-    `*[_type == "contact"][0] {
-      email,
-    }
     `
   )
 
@@ -46,9 +39,16 @@ export async function getProfileData() {
         "alt": image.alt,
         text
         },
-
       about,
-
+      projects {
+        title,
+        items{
+        description,
+        "tags": tags[],
+        "image": image.asset -> url,
+        "alt": image.alt,
+        text}
+      },
       skills {
         title,
         "tags": tags[],

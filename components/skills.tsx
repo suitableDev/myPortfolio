@@ -18,7 +18,6 @@ export default function Skills() {
     const fetchData = async () => {
       try {
         const data = await getProfileData();
-        console.log(data.skills.title);
         setSkills(data.skills);
       } catch (error) {
         console.error("Error fetching data:", error);
