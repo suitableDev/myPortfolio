@@ -1,33 +1,13 @@
 "use client"
-
-import React, { useEffect, useState } from "react"
 import SectionHeading from "./section-heading"
 import { motion } from "framer-motion"
 import { useSectionInView } from "@/lib/hooks"
-import { getProfileData } from "@/sanity/lib/client"
 import { PortableText } from "@portabletext/react"
+import { aboutProps } from "@/sanity/lib/interface"
 
 
-export default function Test() {
+const About: React.FC<{data: aboutProps}> = ({ data }) => {
   const { ref } = useSectionInView("About", 0.6)
-  const [ about, setAbout ] = useState(null)
-
-  useEffect(() => {
-    const fetchData = async () => {
-    try{
-        const data = await getProfileData()
-        setAbout(data.about)
-    } catch(error){
-        console.error('Error fetching data:', error)
-    }
-};
-
-fetchData();
-}, []); 
-if (!about) {
-return
-}
-
   return (
     <motion.section
       ref={ref}
@@ -38,11 +18,11 @@ return
     id="about"
     >
         <SectionHeading>
-        {about.title}
+        {data.title}
         </SectionHeading>
-
-        <PortableText value={about.text} />
-        
+        <PortableText value={data.text} />
     </motion.section>
   )
 }
+
+export default About

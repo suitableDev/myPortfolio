@@ -1,36 +1,17 @@
 "use client"
 import Image from "next/image"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { BsArrowRight } from "react-icons/bs"
 import { HiDownload } from "react-icons/hi"
 import { FaGithubSquare } from "react-icons/fa"
 import { useSectionInView } from "@/lib/hooks"
-import { getProfileData } from "@/sanity/lib/client"
 import { PortableText } from "@portabletext/react"
+import { introProps } from "@/sanity/lib/interface"
 
-export default function Intro() {
+const Intro: React.FC<{data: introProps}> = ({ data }) => {
   const { ref } = useSectionInView("Home", 0.5)
-  const [intro, setIntro] = useState(null)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getProfileData()
-        setIntro(data.intro);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-    fetchData();
-  }, []); 
-//prevent error on no data being present
-  if (!intro) {
-    return 
-  }
-
-  
   return (
     <section 
       ref={ref}
@@ -47,11 +28,9 @@ export default function Intro() {
               duration: 0.2,
             }}
           >
-
-
-                <Image 
-                src={intro.image}
-                alt={intro.alt}
+              <Image 
+                src={data.image}
+                alt={data.alt}
                 width="192"
                 height="192"
                 quality="95"
@@ -79,7 +58,7 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <PortableText value={intro.text}/>
+        <PortableText value={data.text}/>
       </motion.h1>
       
       <motion.div
@@ -118,3 +97,4 @@ export default function Intro() {
     </section>
   )
 }
+export default Intro

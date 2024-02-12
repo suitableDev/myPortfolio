@@ -1,14 +1,13 @@
-import { createClient } from 'next-sanity'
+import { createClient } from "next-sanity";
 
-import { apiVersion, dataset, projectId, useCdn } from '../env'
+import { apiVersion, dataset, projectId, useCdn } from "../env";
 
 export const client = createClient({
   apiVersion,
   dataset,
   projectId,
   useCdn,
-})
-
+});
 
 export async function getProjectsData() {
   const data = await client.fetch(
@@ -25,7 +24,7 @@ export async function getProjectsData() {
   }
 }
     `
-  )
+  );
 
   return data;
 }
@@ -58,7 +57,7 @@ export async function getProfileData() {
       contact,
     }
     `
-  )
+  );
 
   return data;
 }

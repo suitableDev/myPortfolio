@@ -6,6 +6,7 @@ import ActiveSectionContextProvider from '@/context/active-section-context'
 import { Toaster } from 'react-hot-toast'
 import Footer from '@/components/footer'
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   description: 'Scott James is a front end web developer...',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode

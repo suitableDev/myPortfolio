@@ -1,6 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { getProfileData } from "@/sanity/lib/client";
+import React from "react";
 import { PortableText } from "@portabletext/react";
 import { useSectionInView } from "@/lib/hooks";
 import SectionHeading from "./section-heading";
@@ -10,36 +9,21 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import SVG from "react-inlinesvg";
+import { experienceHeadingProps, experienceProps } from "@/sanity/lib/interface";
 
-export default function Experience() {
-  //NAV BAR highlight functionality
+const Experience: React.FC<{heading:experienceHeadingProps ,data: experienceProps[]}> = ({ heading, data }) => {
   const { ref } = useSectionInView("Experience", 0.3);
-
-  // FETCH experince data
-  const [experience, setExperience] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getProfileData();
-        setExperience(data.experience);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []);
-  if (!experience) {
-    return;
-  }
 
   return (
     <section ref={ref} id="experience" className="scroll-mt-28 mb-28 sm:mb-35">
-      {experience && <SectionHeading>{experience.title}</SectionHeading>}
+       <SectionHeading>{heading.title}</SectionHeading>
+       <div className="text-center mb-8 -mt-4 font-light">
+       <PortableText value={heading.description}/>
+       </div>
 
-      {experience.items && (
+      {data && (
         <VerticalTimeline lineColor="">
-          {experience.items.map((item, index) => (
+          {data.map((item, index) => (
             <React.Fragment key={index}>
               <VerticalTimelineElement
                 contentStyle={{
@@ -61,8 +45,8 @@ export default function Experience() {
                   fontSize: "1rem",
                 }}
               >
-                <h3>{item.title}</h3>
-                <p>{item.location}</p>
+                <h3 className="text-2xl font-bold">{item.title}</h3>
+                <h3 className="text-xl">{item.location}</h3>
                 <PortableText value={item.description} />
               </VerticalTimelineElement>
             </React.Fragment>
@@ -72,3 +56,5 @@ export default function Experience() {
     </section>
   );
 }
+
+export default Experience

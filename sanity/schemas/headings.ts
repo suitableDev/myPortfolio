@@ -1,8 +1,8 @@
 import { defineType } from 'sanity';
 
 export default defineType({
-  name: 'contact',
-  title: 'Contact',
+  name: 'headings',
+  title: 'Headings',
   type: 'document',
   fields: [
     {
@@ -10,10 +10,11 @@ export default defineType({
       title: 'Title',
       type: 'string',
     },
-    {
-      name: 'email',
-      title: 'Email address',
-      type: 'string',
-    },
+  {
+    name: 'description',
+    title: 'Description',
+    type: 'array',
+    of: [{ type: 'block' }],
+  },
   ],
 });

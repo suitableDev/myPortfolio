@@ -17,6 +17,11 @@ export default defineType({
       of: [{ type: 'block' }],
     },
     {
+      name: 'url',
+      title: 'Url',
+      type: 'string',
+    },
+    {
       name: 'tags',
       title: 'Tags',
       type: 'array',

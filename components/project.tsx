@@ -1,29 +1,27 @@
-"use client";
+"use client"
 
-import { useRef } from "react";
-import { PortableText } from "@portabletext/react";
-import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react"
+import { PortableText } from "@portabletext/react"
+import Image from "next/image"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { projectsProps } from "@/sanity/lib/interface"
 
-// Import the ProjectData interface
-import { ProjectData } from "./projects"
-
-// Use the ProjectData interface in the ProjectProps type
-type ProjectProps = ProjectData;
+type ProjectProps = projectsProps
 
 export default function Project({
-  name,
+  title,
   description,
   tags,
   image,
+  alt,
 }: ProjectProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["0 1", "1.33 1"],
-  });
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+  })
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1])
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1])
 
   return (
     <motion.div
@@ -36,7 +34,7 @@ export default function Project({
     >
       <section className="bg-gray-100 max-w-[42rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8">
         <div className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]">
-          <h3 className="text-2xl font-semibold">{name}</h3>
+          <h3 className="text-2xl font-semibold">{title}</h3>
           <span className="mt-2 leading-relaxed text-gray-700">
             {description && <PortableText value={description} />}
           </span>
@@ -54,7 +52,7 @@ export default function Project({
 
         <Image
           src={image}
-          alt="Project I worked on"
+          alt={alt}
           width="192"
           height="192"
           quality={95}
@@ -73,5 +71,5 @@ export default function Project({
         />
       </section>
     </motion.div>
-  );
+  )
 }

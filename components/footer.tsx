@@ -1,16 +1,17 @@
 import React from 'react'
+import { basicFetch, footerData } from '@/sanity/lib/fetchData'
+import { PortableText } from '@portabletext/react'
 
-export default function Footer() {
+export default async function Footer() {
+  const footer = await basicFetch(footerData)
   return (
     <footer className="mb-10 px-4 text-center text-gray-500">
     <small className="mb-2 block text-xs">
-      &copy; 2024 Scott James. All rights reserved.
+      {footer.copyright}
     </small>
-    <p className="text-xs">
-      <span className="font-semibold">About this website:</span> built with
-      React & Next.js (App Router & Server Actions), TypeScript, Tailwind CSS,
-      Framer Motion, React Email & Resend, Vercel hosting.
-    </p>
+    <span className='text-sm'>
+    <PortableText value={footer.text} />
+    </span>
   </footer>
   )
 }
