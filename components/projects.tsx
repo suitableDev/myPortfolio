@@ -15,9 +15,11 @@ const Projects: React.FC<{heading:projectHeadingProps ,data: projectsProps[]}> =
       {data && (
         <div>
           {data.map((projectItem, index) => (
-            <React.Fragment key={index}>
-              <Project {...(projectItem as unknown as projectsProps)} />
+            projectItem.url && (
+              <React.Fragment key={index}>
+                <Project {...(projectItem as unknown as projectsProps)} />
               </React.Fragment>
+            )
           ))}
         </div>
       )}
