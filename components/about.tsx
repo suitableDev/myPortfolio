@@ -1,13 +1,13 @@
 "use client"
-
-import React from "react"
 import SectionHeading from "./section-heading"
 import { motion } from "framer-motion"
 import { useSectionInView } from "@/lib/hooks"
+import { PortableText } from "@portabletext/react"
+import { aboutProps } from "@/sanity/lib/interface"
 
-export default function About() {
+
+const About: React.FC<{data: aboutProps}> = ({ data }) => {
   const { ref } = useSectionInView("About", 0.6)
-
   return (
     <motion.section
       ref={ref}
@@ -18,17 +18,11 @@ export default function About() {
     id="about"
     >
         <SectionHeading>
-            About me
+        {data.title}
         </SectionHeading>
-        <p className="mb-3 drop-shadow-xl">
-           <strong className="[text-shadow:_0px_3px_0px_#b2a98f]"> Despite all my rage I'm still just a rat in a maze</strong>
-        </p>
-        <p className="mb-3">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
-        <p className="mb-3">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
+        <PortableText value={data.text!} />
     </motion.section>
   )
 }
+
+export default About

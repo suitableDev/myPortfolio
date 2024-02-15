@@ -1,5 +1,5 @@
 "use client"
-
+import React from "react"
 import SectionHeading from "./section-heading"
 import { motion } from "framer-motion"
 import { useSectionInView } from "@/lib/hooks"
@@ -7,7 +7,9 @@ import { sendEmail } from "@/actions/sendEmail"
 import SubmitBtn from "./submit-btn"
 import toast from "react-hot-toast"
 
-export default function Contact() {
+import { contactProps } from "@/sanity/lib/interface"
+
+const Contact: React.FC<{data: contactProps}> = ({ data }) => {
     const { ref } = useSectionInView("Contact")
 
   return (
@@ -28,14 +30,14 @@ export default function Contact() {
       once: true,
     }}
   >
-    <SectionHeading>Contact me</SectionHeading>
+    <SectionHeading>{data.title}</SectionHeading>
 
     <p className="text-gray-700 -mt-6">
       Please contact me directly at{" "}
-      <a className="underline" href="mailto:example@gmail.com">
-        example@gmail.com
+      <a className="underline" href={"mailto:" + data.email}>
+        {data.email}
       </a>{" "}
-      or through this form.
+      or through this form:
     </p>
 
     <form
@@ -70,3 +72,4 @@ export default function Contact() {
   </motion.section>
   )
 }
+export default Contact

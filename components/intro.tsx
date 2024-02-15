@@ -3,14 +3,15 @@ import Image from "next/image"
 import React from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { BsArrowRight, BsLinkedin } from "react-icons/bs"
+import { BsArrowRight } from "react-icons/bs"
 import { HiDownload } from "react-icons/hi"
 import { FaGithubSquare } from "react-icons/fa"
 import { useSectionInView } from "@/lib/hooks"
+import { PortableText } from "@portabletext/react"
+import { introProps } from "@/sanity/lib/interface"
 
-export default function Intro() {
+const Intro: React.FC<{data: introProps}> = ({ data }) => {
   const { ref } = useSectionInView("Home", 0.5)
-
   return (
     <section 
       ref={ref}
@@ -27,18 +28,9 @@ export default function Intro() {
               duration: 0.2,
             }}
           >
-
-                  <svg className="h-0 w-0">
-                    <clipPath id="inline-blob" clipPathUnits="objectBoundingBox" transform="scale(0.0023, 0.0021)">
-                      <path d="M332.3,48.8c32.6,18.1,58.5,49.4,64.7,83.7c6.3,34.3-7.1,71.5-15.8,107.1c-8.6,35.7-12.6,69.7-26,108.4
-                        c-13.5,38.6-36.5,81.9-68,86.9c-31.4,5-71.5-28.3-117.1-41.8c-45.7-13.6-97.1-7.5-123.9-28.3c-26.7-20.8-28.9-68.5-35-115.4
-                        c-6.2-46.8-16.4-92.6-8-138c8.3-45.3,35.3-90,74.7-105s91.3-0.3,136.9,9.6C260.4,25.8,299.7,30.6,332.3,48.8z"/>
-                    </clipPath>
-                  </svg>
-
-                <Image 
-                src="/me.jpg" 
-                alt="Scott James front end developer"
+              <Image 
+                src={data.image!}
+                alt={data.alt!}
                 width="192"
                 height="192"
                 quality="95"
@@ -66,12 +58,9 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, I'm Scott.</span> I'm a{" "}
-        <span className="font-bold">front-end developer</span> with a{" "}
-        <span className="font-bold">zesty</span> lust for life. I bloody love
-        building <span className="italic">sites & apps</span>. My focus is{" "}
-        <span className="underline">React (Next.js)</span>.
+        <PortableText value={data.text!}/>
       </motion.h1>
+      
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
         initial={{ opacity: 0, y: 100 }}
@@ -90,24 +79,16 @@ export default function Intro() {
 
         <a
           className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack"
-          href="/CV.pdf"
-          download
+          href={data.cvURL}
+          target="_blank"
         >
           Download CV{" "}
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
         </a>
-{/* 
-        <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack"
-          href="https://images.squarespace-cdn.com/content/v1/62a793833847c539b0967c69/1657795316505-ZUWEOL5OIC4TU6QZSGIZ/image-asset.jpeg?format=1000w"
-          target="_blank"
-        >
-          <BsLinkedin />
-        </a> */}
 
         <a
           className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack"
-          href="https://miro.medium.com/v2/resize:fit:640/format:webp/1*NVnMcC9xCjty1FOofU5L_g.png"
+          href={data.url}
           target="_blank"
         >
           <FaGithubSquare />
@@ -116,3 +97,4 @@ export default function Intro() {
     </section>
   )
 }
+export default Intro
