@@ -5,12 +5,14 @@ export interface introProps {
   image?: string;
   alt?: string;
   text?: [];
+  url?: string;
+  cvURL?: string;
 }
 
 export interface aboutProps {
   _id?: string;
   title?: string;
-  text?: TypedObject[] ;
+  text?: TypedObject[];
 }
 
 export interface projectHeadingProps {
@@ -22,7 +24,7 @@ export interface projectHeadingProps {
 export interface projectsProps {
   title?: string;
   description?: TypedObject[];
-  url?: string;
+  url?: string | null;
   tags?: string[];
   image?: string;
   alt?: string;
@@ -46,7 +48,10 @@ export interface experienceProps {
   location?: string;
   date?: string;
   description?: TypedObject[];
-  icon?: string;
+  text?: TypedObject[];
+  icon?: {
+    svg?: string;
+  };
 }
 
 export interface contactProps {

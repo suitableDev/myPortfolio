@@ -25,6 +25,15 @@ export default defineType({
             title: 'Some text',
             type: 'array',
             of: [{ type: 'block' }]
-        }
+        },      {
+          name: 'url',
+          title: 'GitHub Link',
+          type: 'string',
+        },
+        {
+          name: 'file',
+          title: 'CV upload',
+          type: 'file',
+        }, 
   ]
 });

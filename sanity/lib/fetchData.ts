@@ -16,6 +16,8 @@ export const introData = `
     "image": image.asset -> url,
     "alt": image.alt,
     text,
+    url,
+    "cvURL": file.asset->url
 }
 `;
 export const aboutData = `
@@ -59,12 +61,13 @@ export const experienceHeadingData = `
 }
 `;
 export const experienceData=`
-*[_type == 'experience']{
+*[_type == 'experience']| order(date desc){
     _id,
     title,
     location,    
     date,
     description,
+    text,
     icon
 } 
 `;

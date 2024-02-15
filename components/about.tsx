@@ -20,7 +20,7 @@ const About: React.FC<{data: aboutProps}> = ({ data }) => {
         <SectionHeading>
         {data.title}
         </SectionHeading>
-        <PortableText value={data.text} />
+        <PortableText value={data.text!} />
     </motion.section>
   )
 }

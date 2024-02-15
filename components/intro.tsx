@@ -29,8 +29,8 @@ const Intro: React.FC<{data: introProps}> = ({ data }) => {
             }}
           >
               <Image 
-                src={data.image}
-                alt={data.alt}
+                src={data.image!}
+                alt={data.alt!}
                 width="192"
                 height="192"
                 quality="95"
@@ -58,7 +58,7 @@ const Intro: React.FC<{data: introProps}> = ({ data }) => {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <PortableText value={data.text}/>
+        <PortableText value={data.text!}/>
       </motion.h1>
       
       <motion.div
@@ -79,8 +79,8 @@ const Intro: React.FC<{data: introProps}> = ({ data }) => {
 
         <a
           className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack"
-          href="/CV.pdf"
-          download
+          href={data.cvURL}
+          target="_blank"
         >
           Download CV{" "}
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
@@ -88,7 +88,7 @@ const Intro: React.FC<{data: introProps}> = ({ data }) => {
 
         <a
           className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack"
-          href="https://miro.medium.com/v2/resize:fit:640/format:webp/1*NVnMcC9xCjty1FOofU5L_g.png"
+          href={data.url}
           target="_blank"
         >
           <FaGithubSquare />

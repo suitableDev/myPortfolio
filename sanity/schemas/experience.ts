@@ -22,6 +22,12 @@ export default defineType({
       of: [{ type: 'block' }],
     },
     {
+      name: 'text',
+      title: 'Text',
+      type: 'array',
+      of: [{ type: 'block' }],
+    },
+    {
       name: 'icon',
       title: 'Icon',
       type: 'iconPicker',
@@ -33,8 +39,6 @@ export default defineType({
         name: 'date',
         title: 'date',
         type: 'string',
-        //could change to date type down the line...
       },
-
   ],
 });

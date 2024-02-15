@@ -1,11 +1,10 @@
 "use client"
-
 import { useRef } from "react"
 import { PortableText } from "@portabletext/react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { projectsProps } from "@/sanity/lib/interface"
-
+import Link from "next/link"
 type ProjectProps = projectsProps
 
 export default function Project({
@@ -14,6 +13,7 @@ export default function Project({
   tags,
   image,
   alt,
+  url,
 }: ProjectProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -32,6 +32,7 @@ export default function Project({
       }}
       className="group mb-3 sm:mb-8 last:mb-0"
     >
+      <Link href={url}>
       <section className="bg-gray-100 max-w-[42rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8">
         <div className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]">
           <h3 className="text-2xl font-semibold">{title}</h3>
@@ -39,7 +40,7 @@ export default function Project({
             {description && <PortableText value={description} />}
           </span>
           <ul className="flex flex-wrap mt-4 gap-2 sm:mt-auto">
-            {tags.map((tag, index) => (
+            {tags?.map((tag, index) => (
               <li
                 className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full"
                 key={index}
@@ -51,8 +52,8 @@ export default function Project({
         </div>
 
         <Image
-          src={image}
-          alt={alt}
+          src={image!}
+          alt={alt!}
           width="192"
           height="192"
           quality={95}
@@ -70,6 +71,7 @@ export default function Project({
         group-even:right-[initial] group-even:-left-40"
         />
       </section>
+      </Link>
     </motion.div>
   )
 }
