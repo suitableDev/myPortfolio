@@ -10,9 +10,10 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import SVG from "react-inlinesvg";
 import { experienceHeadingProps, experienceProps } from "@/sanity/lib/interface";
+import { inView } from "framer-motion";
 
 const Experience: React.FC<{heading:experienceHeadingProps ,data: experienceProps[]}> = ({ heading, data }) => {
-  const { ref } = useSectionInView("Experience", 0.3);
+  const { ref, inView } = useSectionInView("Experience", 0.3);
 
   return (
     <section ref={ref} id="experience" className="scroll-mt-28 mb-28 sm:mb-35">
@@ -26,6 +27,7 @@ const Experience: React.FC<{heading:experienceHeadingProps ,data: experienceProp
           {data.map((item, index) => (
             <React.Fragment key={index}>
               <VerticalTimelineElement
+                visible={inView}
                 contentStyle={{
                   background: "#f3f4f6",
                   boxShadow: "none",
