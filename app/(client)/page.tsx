@@ -17,6 +17,8 @@ import {
   experienceHeadingData 
 } from "@/sanity/lib/fetchData"
 
+export const revalidate = 60
+
 export default async function Home() {
   const intro = await basicFetch(introData)
   const about = await basicFetch(aboutData)
