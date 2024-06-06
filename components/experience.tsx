@@ -44,6 +44,7 @@ const Experience: React.FC<{heading:experienceHeadingProps ,data: experienceProp
                   background: "white",
                   fontSize: "1rem",
                 }}
+                visible={true}
               >
                 <h3 className="text-2xl font-bold">{item.title}</h3>
                 <h3 className="text-xl">{item.location}</h3>
