@@ -65,11 +65,10 @@ const Contact: React.FC<{ data: contactProps }> = ({ data }) => {
       <SectionHeading>{data.title}</SectionHeading>
 
       <p className="text-gray-700 -mt-6">
-        Please contact me directly at{" "}
+        Feel free to contact me through this form or directly at{" "}
         <a className="underline" href={`mailto:${data.email}`}>
           {data.email}
         </a>{" "}
-        or through this form:
       </p>
 
       <form
